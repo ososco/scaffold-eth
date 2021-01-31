@@ -8,27 +8,6 @@ export default function Ramp(props) {
 
   const type = "default";
 
-  let allFaucets = []
-  for(let n in props.networks){
-    if(props.networks[n].chainId!=31337&&props.networks[n].chainId!=1){
-      allFaucets.push(
-        <p key={props.networks[n].id}>
-          <Button
-            style={{color:props.networks[n].color}}
-            type={type}
-            size="large"
-            shape="round"
-            onClick={() => {
-              window.open(props.networks[n].faucet);
-            }}
-          >
-            {props.networks[n].name}
-          </Button>
-        </p>
-      )
-    }
-  }
-
   return (
     <div>
       <Button
@@ -115,10 +94,69 @@ export default function Ramp(props) {
 
         <Divider />
 
-        <h2>Testnet ETH</h2>
+        <p>
+          <Button
+            type={type}
+            size="large"
+            shape="round"
+            onClick={() => {
+              window.open("https://faucet.rinkeby.io/");
+            }}
+          >
+            <span style={{ paddingRight: 15 }} role="img" aria-label="rinkeby">
+              🟨
+            </span>{" "}
+            Rinkeby
+          </Button>
+        </p>
 
-        {allFaucets}
+        <p>
+          <Button
+            type={type}
+            size="large"
+            shape="round"
+            onClick={() => {
+              window.open("https://faucet.ropsten.be/");
+            }}
+          >
+            <span style={{ paddingRight: 15 }} role="img" aria-label="ropsten">
+              🟠
+            </span>{" "}
+            Ropsten
+          </Button>
+        </p>
 
+        <p>
+          <Button
+            type={type}
+            size="large"
+            shape="round"
+            onClick={() => {
+              window.open("https://faucet.kovan.network/");
+            }}
+          >
+            <span style={{ paddingRight: 15 }} role="img" aria-label="kovan">
+              🟣
+            </span>{" "}
+            Kovan
+          </Button>
+        </p>
+
+        <p>
+          <Button
+            type={type}
+            size="large"
+            shape="round"
+            onClick={() => {
+              window.open("https://faucet.goerli.mudit.blog/");
+            }}
+          >
+            <span style={{ paddingRight: 15 }} role="img" aria-label="goerli">
+              🔵
+            </span>{" "}
+            Goerli
+          </Button>
+        </p>
       </Modal>
     </div>
   );

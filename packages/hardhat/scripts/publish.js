@@ -7,10 +7,10 @@ const graphDir = "../subgraph"
 
 function publishContract(contractName) {
   console.log(
-    " 💽 Publishing",
+    "Publishing",
     chalk.cyan(contractName),
     "to",
-    chalk.gray(publishDir)
+    chalk.yellow(publishDir)
   );
   try {
     let contract = fs
@@ -62,16 +62,12 @@ function publishContract(contractName) {
       JSON.stringify(contract.abi, null, 2)
     );
 
-    console.log(" 📠 Published "+chalk.green(contractName)+" to the frontend.")
+
 
     return true;
   } catch (e) {
-    if(e.toString().indexOf("no such file or directory")>=0){
-      console.log(chalk.yellow(" ⚠️  Can't publish "+contractName+" yet (make sure it getting deployed)."))
-    }else{
-      console.log(e);
-      return false;
-    }
+    console.log(e);
+    return false;
   }
 }
 
